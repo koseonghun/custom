@@ -95,6 +95,7 @@ function signupbtn(){
 	var address = $("#custom_user_address").val();
 	var pwcheck = $("#pwcheck").val();
 	var inputcheck = $("#inputcheck").val();
+	var specialCheck = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
 	
 	if(name==""){
 		alert("이름을 입력하세요.")
@@ -103,7 +104,7 @@ function signupbtn(){
 	}else if(pswd==""){
 		alert("비밀번호를 입력하세요.")
 	}else if(pswd2==""){
-		alert("비밀번호를 재입력하세요.")
+		alert("비밀번호를 확인하세요.")
 	}else if(pswd!==pswd2){
 		alert("비밀번호가 일치하지않습니다.")
 	}else if(email==""){
@@ -116,6 +117,12 @@ function signupbtn(){
 		alert("주소를 입력하세요.")
 	}else if(inputcheck==1){
 		alert("아이디가 중복되었습니다.")
+	}else if(nick.search(/\s/) != -1){
+		alert("아이디에는 공백이 들어 갈 수 없습니다.")
+	}else if(nick.length>=30){
+		alert("아이디는 30자 이하입니다.")
+	}else if(specialCheck.test(nick)){
+		alert("아이디에는 특수문자가 들어갈 수 없습니다.")
 	}else{
 		signup.submit();
 	}
