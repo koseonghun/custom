@@ -43,8 +43,22 @@ $(function idcheck(){
 	$("#custom_user_nick").keyup(function(){
 		
 		var id =$("#custom_user_nick").val();
+		var specialCheck = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
 		
-		$.ajax({
+		if(id==null || id==""){
+			$("#checkid").html("아이디는 필수 입력 값 입니다.")
+			$("#checkid").attr("color","red")
+		}else if(id.search(/\s/) != -1){
+			$("#checkid").html("아이디에는 공백이 들어갈 수 없습니다.")
+			$("#checkid").attr("color","red")
+		}else if(id.length>=30){
+			$("#checkid").html("아이디는 30자 이하입니다.")
+			$("#checkid").attr("color","red")
+		}else if(specialCheck.test(id)){
+			$("#checkid").html("아이디에는 특수문자가 들어갈 수 없습니다.")
+			$("#checkid").attr("color","red")
+		}else{
+			$.ajax({
 			url : "idcheck",
 			type : "POST",
 			data : {
@@ -65,6 +79,7 @@ $(function idcheck(){
 				alert("에러!")
 			}
 		})
+		}
 	});
 })
 

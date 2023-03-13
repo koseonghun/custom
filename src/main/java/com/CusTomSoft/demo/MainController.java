@@ -23,6 +23,12 @@ public class MainController {
 		return "page-login";
 	}
 	
+	@GetMapping("page-login")
+	public String pagelogin(){
+		
+		return "page-login";
+	}
+	
 	@GetMapping("register")
 	public String register() {
 		
@@ -41,7 +47,7 @@ public class MainController {
 		
 		us.signup(vo);
 		
-		return "page-login";
+		return "redirect:page-login";
 	}
 	
 	@PostMapping("login")
