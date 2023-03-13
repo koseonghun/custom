@@ -1,0 +1,38 @@
+server:
+  port: 8085
+    
+  servlet:
+    jsp:
+      init-parameters: 
+        development: true 
+    session:
+      timeout: 7200
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+
+  servlet:
+    multipart:
+      maxFileSize: 10MB
+      maxRequestSize: 20MB        
+  
+          
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/sys
+    username: root
+    password: root
+#    password : 1111
+
+mybatis:
+  type-aliases-package: com.CusTomSoft.demo.Mapper
+  mapper-locations: sqlmapper/*.xml
+  
+ 
