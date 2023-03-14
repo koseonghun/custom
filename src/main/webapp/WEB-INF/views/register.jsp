@@ -121,7 +121,7 @@ function signupbtn(){
 		alert("아이디에는 공백이 들어 갈 수 없습니다.")
 	}else if(nick.length>=30){
 		alert("아이디는 30자 이하입니다.")
-	}else if(nick.length<30){
+	}else if(nick.length<3){
 		alert("아이디는 3자 이상입니다.")
 	}else if(specialCheck.test(nick)){
 		alert("아이디에는 특수문자가 들어갈 수 없습니다.")
@@ -134,8 +134,38 @@ function signupbtn(){
 
 </script>
 <body>
+
 <form id="signup" class="signup" action="signup" method="POST">
 	<div id="wrapper">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="brand">
+				<a>THE CusTom</a>
+			</div>
+			<div class="container-fluid">
+				<div class="navbar-btn">
+					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
+				</div>
+				<div id="navbar-menu">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>로그인이 필요합니다.</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+						</li>
+						<li>
+							<a class="update-pro" title="Upgrade to Pro" target="_blank">
+								<button type="button" class="btn btn-success update-pro" onclick="location.href='page-login'">
+									<span>login</span>
+								</button>
+								<button type="button" class="btn btn-success update-pro" style="background-color:blue;" onclick="location.href='register'">
+									<span>sign up</span>
+								</button>
+							</a>
+
+						</li>
+						</if>
+					</ul>
+				</div>
+			</div>
+		</nav>
 		<div class="vertical-align-wrap">
 			<div class="vertical-align-middle">
 				<div class="auth-box ">
@@ -169,7 +199,6 @@ function signupbtn(){
 									<input type="text" class="form-control" id="custom_user_address" name="custom_user_address" placeholder="Addr">
 								</div>
 								<button type="button" class="btn btn-primary btn-lg btn-block" onclick="javascript:signupbtn()">JOIN</button></br>
-								<button type="button" class="btn btn-primary btn-lg btn-block" onclick="location.href='page-login'">LOGIN</button>
 						</div>
 					</div>
 					<div class="right">
