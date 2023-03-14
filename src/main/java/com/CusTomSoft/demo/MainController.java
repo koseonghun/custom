@@ -1,7 +1,11 @@
 package com.CusTomSoft.demo;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,7 +56,7 @@ public class MainController {
 	
 	@PostMapping("login")
 	@ResponseBody
-	public UserVO login(@RequestParam String id, @RequestParam String pw) {
+	public UserVO login(@RequestParam String id, @RequestParam String pw,HttpServletRequest request, Model model) {
 		
 		UserVO vo = new UserVO();
 		
@@ -61,7 +65,19 @@ public class MainController {
 		
 		UserVO login = us.login(vo);
 		
+		HttpSession session = request.getSession();
+		session.setAttribute("user",login);
+		
 		return login;
+	}
+	
+	@GetMapping("logout")
+	public String logout(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		return "redirect:page-login";
 	}
 	
 	@PostMapping("idcheck")
@@ -71,6 +87,19 @@ public class MainController {
 		int idcheck = us.idcheck(id);
 		
 		return idcheck;
+	}
+	
+	@GetMapping("board")
+	public String table() {
+		
+		
+		return "board";
+	}
+	
+	@GetMapping("jqgrid")
+	public String jqgrid() {
+		
+		return "jqgrid";
 	}
 	
 }

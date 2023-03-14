@@ -43,7 +43,7 @@ $(function idcheck(){
 	$("#custom_user_nick").keyup(function(){
 		
 		var id =$("#custom_user_nick").val();
-		var specialCheck = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+		var specialCheck = /[`~!@#$%^&*|\\\'\";:\/?()_+=_]/gi;
 		
 		if(id==null || id==""){
 			$("#checkid").html("아이디는 필수 입력 값 입니다.")
@@ -51,8 +51,8 @@ $(function idcheck(){
 		}else if(id.search(/\s/) != -1){
 			$("#checkid").html("아이디에는 공백이 들어갈 수 없습니다.")
 			$("#checkid").attr("color","red")
-		}else if(id.length>=30){
-			$("#checkid").html("아이디는 30자 이하입니다.")
+		}else if(id.length>=30 || id.length<3){
+			$("#checkid").html("아이디는 2자 이상 30자 이하입니다.")
 			$("#checkid").attr("color","red")
 		}else if(specialCheck.test(id)){
 			$("#checkid").html("아이디에는 특수문자가 들어갈 수 없습니다.")
@@ -95,7 +95,7 @@ function signupbtn(){
 	var address = $("#custom_user_address").val();
 	var pwcheck = $("#pwcheck").val();
 	var inputcheck = $("#inputcheck").val();
-	var specialCheck = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+	var specialCheck = /[`~!@#$%^&*|\\\'\";:\/?()_+=_]/gi;
 	
 	if(name==""){
 		alert("이름을 입력하세요.")
@@ -121,6 +121,8 @@ function signupbtn(){
 		alert("아이디에는 공백이 들어 갈 수 없습니다.")
 	}else if(nick.length>=30){
 		alert("아이디는 30자 이하입니다.")
+	}else if(nick.length<30){
+		alert("아이디는 3자 이상입니다.")
 	}else if(specialCheck.test(nick)){
 		alert("아이디에는 특수문자가 들어갈 수 없습니다.")
 	}else{
