@@ -92,7 +92,6 @@ public class MainController {
 	@GetMapping("board")
 	public String table() {
 		
-		
 		return "board";
 	}
 	
@@ -100,6 +99,12 @@ public class MainController {
 	public String jqgrid() {
 		
 		return "jqgrid";
+	}
+	
+	@GetMapping("write")
+	public String write() {
+		
+		return "write";
 	}
 	
 }

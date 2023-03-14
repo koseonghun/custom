@@ -44,14 +44,6 @@
 						<i class="lnr lnr-arrow-left-circle"></i>
 					</button>
 				</div>
-				<form class="navbar-form navbar-left">
-					<div class="input-group">
-						<input type="text" value="" class="form-control"
-							placeholder="Search dashboard..."> <span
-							class="input-group-btn"><button type="button"
-								class="btn btn-primary">Search</button></span>
-					</div>
-				</form>
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -109,15 +101,28 @@
 							<div class="panel">
 								<div class="panel-heading">
 									<h3 class="panel-title">Table Inside No Padding</h3>
+									<form class="navbar-form navbar-left">
+										<div class="input-group">
+											<input type="text" value="" class="form-control"placeholder="Search"> 
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-primary" style="background-color:black;">검색</button>
+											</span>
+										</div>
+									</form>
 								</div>
 								<div>
-									<button type="button" style="float: right;" class="btn btn-success update-pro"
+									<button type="button" style="float: right;"
+										class="btn btn-success update-pro"
 										onclick="location.href='page-login'">
-										<span>글쓰기</span>
-									</button>
-									<button type="button" style="float: right;" class="btn btn-success update-pro"
-										onclick="location.href='register'">
 										<span>삭제</span>
+									</button>
+								</div>
+								<div>
+									<button type="button"
+										style="float: right; background-color: blue;"
+										class="btn btn-success update-pro"
+										onclick="location.href='write'">
+										<span>글쓰기</span>
 									</button>
 								</div>
 								<div class="panel-body no-padding">

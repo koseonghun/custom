@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.CusTomSoft.demo.Mapper.BoardMapper">
+	<resultMap type="com.CusTomSoft.demo.Mapper.BoardMapper" id="bm">
+		<result property="board_seq" column="board_seq"/>
+		<result property="board_title" column="board_title"/>
+		<result property="board_text" column="board_text"/>
+		<result property="board_writer" column="board_writer"/>
+		<result property="board_reg_date" column="board_reg_date"/>
+		<result property="board_mod_date" column="board_mod_date"/>
+		<result property="board_img_path" column="board_img_path"/>
+		<result property="board_del_yn" column="board_del_yn"/>
+	</resultMap>
+
+</mapper>
