@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<title>Tables | Klorofil - Free Bootstrap Dashboard Template</title>
+<title>Elements | Klorofil - Free Bootstrap Dashboard Template</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
@@ -33,6 +34,7 @@
 
 <body>
 	<!-- WRAPPER -->
+
 	<div id="wrapper">
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
@@ -91,67 +93,46 @@
 		<!-- END LEFT SIDEBAR -->
 		<!-- MAIN -->
 		<div class="main">
-
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-6-KO">
-							<!-- TABLE NO PADDING -->
+							<!-- INPUTS -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">BoardList</h3>
-									<form class="navbar-form navbar-left">
-										<div class="input-group">
-											<input type="text" value="" class="form-control"placeholder="Search"> 
-											<span class="input-group-btn">
-												<button type="button" class="form-control" style="background-color:green; color:white;">검색</button>
-											</span>
-										</div>
-									</form>
+									<h3 class="panel-title">RegBoard</h3>
+											<input type="button" value="수정" class="btn btn-success update-pro" style="float:right; background-color:green; color:white;"/>
+											<input type="button" onclick="location.href='boardlist'" class="btn btn-success update-pro" style="float:right; background-color:blue; color:white;" value="목록"/>
 								</div>
-								<div>
-									<button type="button" style="float: right;" class="btn btn-success update-pro"
-										onclick="location.href='page-login'">
-										<span>삭제</span>
-									</button>
-								</div>
-								<div>
-									<button type="button"
-										style="float: right; background-color: blue;" class="btn btn-success update-pro"
-										onclick="location.href='writepage'">
-										<span>글쓰기</span>
-									</button>
-								</div>
-								<div class="panel-body no-padding">
+								<div class="panel-body">
 									<table class="table">
 										<thead>
 											<tr>
-												<th>선택</th>
 												<th>번호</th>
 												<th>제목</th>
 												<th>내용</th>
 												<th>작성자</th>
+												<th>첨부파일</th>
+												<th>작성일자</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${boardList}" var="board">
-												<tr>
-												 	<td><input type="checkbox"/></td>
-													<td>${board.board_seq}</td>
-													<td><a href="detail?board_seq=${board.board_seq}">${board.board_title}</a></td>
-													<td>${board.board_text}</td>
-													<td>${board.board_writer}</td>
-												</tr>
-											</c:forEach>
+											<tr>
+												<td>${detail.board_seq}</td>
+												<td>${detail.board_title}</td>
+												<td>${detail.board_text}</td>
+												<td>${detail.board_writer}</td>
+												<td><a href="file?board_img_path=${detail.board_img_path}">${detail.board_img_path}</a></td>
+												<td><fmt:formatDate pattern="yyyy-MM-dd" value="${detail.board_reg_date}" /></td>
+											</tr>
 										</tbody>
 									</table>
 								</div>
 							</div>
-							<!-- END TABLE NO PADDING -->
+							<!-- END INPUTS -->
 						</div>
 					</div>
-					<!-- END CONDENSED TABLE -->
 				</div>
 			</div>
 			<!-- END MAIN CONTENT -->

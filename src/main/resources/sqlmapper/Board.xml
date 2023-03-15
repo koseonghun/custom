@@ -12,5 +12,20 @@
 		<result property="board_img_path" column="board_img_path"/>
 		<result property="board_del_yn" column="board_del_yn"/>
 	</resultMap>
-
+	
+	<select id="boardList" resultType="com.CusTomSoft.demo.VO.BoardVO">
+		select board_seq,board_title,board_text,board_writer from general_board;
+	</select>
+	
+	<select id="detail" resultType="com.CusTomSoft.demo.VO.BoardVO">
+		select board_seq,board_title,board_text,board_writer,board_reg_date,board_img_path,board_reg_date
+		from general_board where board_seq=#{board_seq};
+	</select>
+	
+	<insert id="write">
+		insert into general_board(board_title,board_writer,board_text,board_img_path,board_reg_date,board_mod_date)
+		values 
+		(#{board_title},#{board_writer},#{board_text},#{board_img_path},now(),now())
+	</insert>
+	
 </mapper>
