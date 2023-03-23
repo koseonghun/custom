@@ -4,18 +4,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <title>Elements | Klorofil - Free Bootstrap Dashboard Template</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <!-- VENDOR CSS -->
-<link rel="stylesheet"
-	href="assets/vendor/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="assets/vendor/linearicons/style.css">
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="assets/css/main.css">
@@ -23,13 +19,10 @@
 <link rel="stylesheet" href="assets/css/demo.css">
 <!-- GOOGLE FONTS -->
 <link
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
-	rel="stylesheet">
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 <!-- ICONS -->
-<link rel="apple-touch-icon" sizes="76x76"
-	href="assets/img/apple-icon.png">
-<link rel="icon" type="image/png" sizes="96x96"
-	href="assets/img/favicon.png">
+<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 </head>
 
 <body>
@@ -54,8 +47,7 @@
 								class="img-circle" alt="Avatar"> <span>${user.custom_user_nick}</span>
 								<i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><i class="lnr lnr-user"></i> <span>My
-											Profile</span></a></li>
+								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
 								<li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
 								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
@@ -102,7 +94,7 @@
 							<div class="panel">
 								<div class="panel-heading">
 									<h3 class="panel-title">RegBoard</h3>
-											<input type="button" value="수정" class="btn btn-success update-pro" style="float:right; background-color:green; color:white;"/>
+											<input type="button" value="수정" onclick="location.href='modify'" class="btn btn-success update-pro" style="float:right; background-color:green; color:white;"/>
 											<input type="button" onclick="location.href='boardlist'" class="btn btn-success update-pro" style="float:right; background-color:blue; color:white;" value="목록"/>
 								</div>
 								<div class="panel-body">
@@ -141,9 +133,8 @@
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">
-					Shared by <i class="fa fa-love"></i><a
-						href="https://bootstrapthemes.co">BootstrapThemes</a>
+				<p class="copyright"> Shared by <i class="fa fa-love"></i>
+				<a href="https://bootstrapthemes.co">BootstrapThemes</a>
 				</p>
 			</div>
 		</footer>

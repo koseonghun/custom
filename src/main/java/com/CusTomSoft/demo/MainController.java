@@ -3,7 +3,6 @@ package com.CusTomSoft.demo;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.CusTomSoft.demo.Service.BoardService;
 import com.CusTomSoft.demo.Service.UserService;
@@ -132,6 +133,12 @@ public class MainController {
 		return "redirect:boardlist";
 	}
 	
+	@PostMapping("write")
+	public String upload() {
+		
+		return "redirect:boardlist";
+	}
+	
 	@GetMapping("detail")
 	public String detail(Model model,int board_seq,BoardVO vo) {
 		
@@ -143,16 +150,16 @@ public class MainController {
 		return "detail";
 	}
 	
-	@GetMapping("file")
-	public String file(@RequestParam String board_img_path, HttpServletResponse response) throws Exception {
-		
-		return "";
-	}
-	
 	@GetMapping("jqgrid")
 	public String jqgrid() {
 		
 		return "jqgrid";
+	}
+	
+	@GetMapping("modify")
+	public String modify() {
+		
+		return "modify";
 	}
 	
 }

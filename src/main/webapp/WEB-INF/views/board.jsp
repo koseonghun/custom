@@ -112,7 +112,7 @@
 								</div>
 								<div>
 									<button type="button" style="float: right;" class="btn btn-success update-pro"
-										onclick="location.href='page-login'">
+										onclick="">
 										<span>삭제</span>
 									</button>
 								</div>
