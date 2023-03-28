@@ -102,7 +102,7 @@ public class MainController {
 	
 	@GetMapping("board")
 	public String table(Model model) throws Exception {
-		
+		  
 		List<BoardVO> boardList = bs.boardList();
 		model.addAttribute("boardList",boardList);
 		
@@ -113,6 +113,7 @@ public class MainController {
 	public String boardlist() {
 		
 		return "redirect:board";
+		
 	}
 	
 	@GetMapping("writepage")
@@ -124,6 +125,7 @@ public class MainController {
 	@PostMapping("write")
 	public String write(BoardVO vo) {
 		
+		
 		bs.write(vo);
 		
 		System.out.println("Controller!!!!!!!!!!+++"+vo.board_title);
@@ -133,11 +135,6 @@ public class MainController {
 		return "redirect:boardlist";
 	}
 	
-	@PostMapping("write")
-	public String upload() {
-		
-		return "redirect:boardlist";
-	}
 	
 	@GetMapping("detail")
 	public String detail(Model model,int board_seq,BoardVO vo) {
@@ -150,6 +147,8 @@ public class MainController {
 		return "detail";
 	}
 	
+
+	
 	@GetMapping("jqgrid")
 	public String jqgrid() {
 		
@@ -160,6 +159,13 @@ public class MainController {
 	public String modify() {
 		
 		return "modify";
+	}
+	
+	@GetMapping("file")
+	public String upload() {
+		
+		return "redirect:boardlist";
+		
 	}
 	
 }

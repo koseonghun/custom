@@ -2,6 +2,8 @@ package com.CusTomSoft.demo.Service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.CusTomSoft.demo.VO.BoardVO;
 
 public interface BoardService {

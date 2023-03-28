@@ -42,7 +42,6 @@
 			write.submit();
 		}
 	}
-	
 </script>
 
 <body>
@@ -76,7 +75,6 @@
 								</button>
 							</a>
 						</li>
-						</if>
 					</ul>
 				</div>
 			</div>
