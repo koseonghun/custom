@@ -13,9 +13,10 @@
 		<result property="board_del_yn" column="board_del_yn"/>
 	</resultMap>
 	
+	<!--  페이징 처리 전 게시물 가져오기
 	<select id="boardList" resultType="com.CusTomSoft.demo.VO.BoardVO">
 		select board_seq,board_title,board_text,board_writer from general_board;
-	</select>
+	</select> -->
 	
 	<select id="detail" resultType="com.CusTomSoft.demo.VO.BoardVO">
 		select board_seq,board_title,board_text,board_writer,board_reg_date,board_img_path,board_reg_date
@@ -27,5 +28,19 @@
 		values 
 		(#{board_title},#{board_writer},#{board_text},#{board_img_path},now(),now())
 	</insert>
+	
+	<select id="boardListCnt" resultType="int">
+		select count(*)
+		from general_board
+	</select>
+	
+	<select id="boardList" resultType="hashmap" parameterType="hashmap">
+		<![CDATA[
+            SELECT * 
+            FROM general_board
+            ORDER BY board_seq DESC
+            LIMIT #{pageStart}, #{perPageNum}
+        ]]>
+	</select>
 	
 </mapper>

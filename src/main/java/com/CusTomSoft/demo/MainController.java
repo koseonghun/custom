@@ -1,6 +1,7 @@
 package com.CusTomSoft.demo;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,12 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.CusTomSoft.demo.Service.BoardService;
 import com.CusTomSoft.demo.Service.UserService;
 import com.CusTomSoft.demo.VO.BoardVO;
+import com.CusTomSoft.demo.VO.Criteria;
+import com.CusTomSoft.demo.VO.Paging;
 import com.CusTomSoft.demo.VO.UserVO;
 
 @Controller
@@ -101,10 +102,23 @@ public class MainController {
 	BoardService bs;
 	
 	@GetMapping("board")
-	public String table(Model model) throws Exception {
+	public String table(Criteria cri,Model model) throws Exception {
 		  
-		List<BoardVO> boardList = bs.boardList();
-		model.addAttribute("boardList",boardList);
+		// 페이징 처리 전 게시물 가져오기
+		//List<BoardVO> boardList = bs.boardList();
+		
+		//전체 게시물 갯수
+		int boardListCnt = bs.boardListCnt();
+		
+        // 페이징 객체
+        Paging paging = new Paging();
+        paging.setCri(cri);
+        paging.setTotalCount(boardListCnt);    
+        
+        List<Map<String, Object>> list = bs.boardList(cri);
+        
+        model.addAttribute("boardlist",list);
+        model.addAttribute("paging", paging);   
 		
 		return "board";
 	}
@@ -124,14 +138,9 @@ public class MainController {
 	
 	@PostMapping("write")
 	public String write(BoardVO vo) {
-		
-		
+			
 		bs.write(vo);
-		
-		System.out.println("Controller!!!!!!!!!!+++"+vo.board_title);
-		System.out.println("Controller!!!!!!!!!!+++"+vo.board_text);
-		System.out.println("Controller!!!!!!!!!!+++"+vo.board_writer);
-		
+	
 		return "redirect:boardlist";
 	}
 	

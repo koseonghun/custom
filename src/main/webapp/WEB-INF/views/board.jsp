@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,8 +30,6 @@
 	href="assets/img/apple-icon.png">
 <link rel="icon" type="image/png" sizes="96x96"
 	href="assets/img/favicon.png">
-</head>
-
 <body>
 	<!-- WRAPPER -->
 	<div id="wrapper">
@@ -103,22 +102,24 @@
 									<h3 class="panel-title">BoardList</h3>
 									<form class="navbar-form navbar-left">
 										<div class="input-group">
-											<input type="text" value="" class="form-control"placeholder="Search"> 
-											<span class="input-group-btn">
-												<button type="button" class="form-control" style="background-color:green; color:white;">검색</button>
+											<input type="text" value="" class="form-control"
+												placeholder="Search"> <span class="input-group-btn">
+												<button type="button" class="form-control"
+													style="background-color: green; color: white;">검색</button>
 											</span>
 										</div>
 									</form>
 								</div>
 								<div>
-									<button type="button" style="float: right;" class="btn btn-success update-pro"
-										onclick="">
+									<button type="button" style="float: right;"
+										class="btn btn-success update-pro" onclick="">
 										<span>삭제</span>
 									</button>
 								</div>
 								<div>
 									<button type="button"
-										style="float: right; background-color: blue;" class="btn btn-success update-pro"
+										style="float: right; background-color: blue;"
+										class="btn btn-success update-pro"
 										onclick="location.href='writepage'">
 										<span>글쓰기</span>
 									</button>
@@ -135,9 +136,9 @@
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${boardList}" var="board">
+											<c:forEach items="${boardlist}" var="board">
 												<tr>
-												 	<td><input type="checkbox"/></td>
+													<td><input type="checkbox" /></td>
 													<td>${board.board_seq}</td>
 													<td><a href="detail?board_seq=${board.board_seq}">${board.board_title}</a></td>
 													<td>${board.board_text}</td>
@@ -146,6 +147,23 @@
 											</c:forEach>
 										</tbody>
 									</table>
+									<ul class="paging" style="text-align: center;">
+										<c:if test="${paging.prev}">
+											<span>
+											<a href='<c:url value="board?page=${paging.startPage-1}"/>'>◀[이전]</a>&nbsp&nbsp
+											</span>
+										</c:if>
+										<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
+											<span>
+											<a href='<c:url value="board?page=${num}"/>'>${num}</a>&nbsp&nbsp
+											</span>
+										</c:forEach>
+										<c:if test="${paging.next && paging.endPage>0}">
+											<span>
+											<a href='<c:url value="board?page=${paging.endPage+1}"/>'>[다음]▶</a>
+											</span>
+										</c:if>
+									</ul>
 								</div>
 							</div>
 							<!-- END TABLE NO PADDING -->
