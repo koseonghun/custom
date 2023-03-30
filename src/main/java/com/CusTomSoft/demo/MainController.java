@@ -196,7 +196,6 @@ public class MainController {
 	public String delete(HttpServletRequest request) {
 		
 		
-		
 		String[] delete = request.getParameterValues("array");
 		int size = delete.length;
 		for(int i=0; i<size; i++) {
@@ -213,6 +212,12 @@ public class MainController {
 		
 		return "redirect:boardlist";
 		
+	}
+	
+	@GetMapping("api")
+	public String api() {
+		
+		return "api";
 	}
 	
 }

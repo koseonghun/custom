@@ -153,11 +153,11 @@ function search(){
 					<ul class="nav">
 						<li><a href="index" class=""><i
 								class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-						<li><a onclick="location.href='board'" class="active"><i
+						<li><a onclick="location.href='board'" class=""><i
 								class="lnr lnr-dice"></i> <span>Board</span></a></li>
 						<li><a onclick="location.href='jqgrid'" class=""><i
 								class="lnr lnr-text-format"></i> <span>JqGrid</span></a></li>
-						<li><a onclick="location.href='api'" class=""><i
+						<li><a onclick="location.href='api'" class="active"><i
 								class="lnr lnr-linearicons"></i> <span>API</span></a></li>
 					</ul>
 				</nav>
@@ -173,73 +173,7 @@ function search(){
 					<div class="row">
 						<div class="col-md-6-KO">
 							<!-- TABLE NO PADDING -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">BoardList</h3>
-									<form class="navbar-form navbar-left">
-										<div class="input-group">
-											<input type="text" id= "search" name="search" value="" class="form-control"
-												placeholder="Search" > <span class="input-group-btn">
-												<button type="button" class="form-control" onclick="javascript:search()" style="background-color: green; color: white;">검색</button>
-											</span>
-										</div>
-									</form>
-								</div>
-								<div>
-									<button type="button" style="float: right;" class="btn btn-success update-pro" onclick="javascript:deletebtn()">
-										<span>삭제</span>
-									</button>
-								</div>
-								<div>
-									<button type="button"
-										style="float: right; background-color: blue;"
-										class="btn btn-success update-pro"
-										onclick="location.href='writepage'">
-										<span>글쓰기</span>
-									</button>
-								</div>
-								<div class="panel-body no-padding">
-									<table class="table">
-										<thead>
-											<tr>
-												<th>선택</th>
-												<th>번호</th>
-												<th>제목</th>
-												<th>내용</th>
-												<th>작성자</th>
-											</tr>
-										</thead>
-										<tbody>
-											<c:forEach items="${boardlist}" var="board">
-												<tr>
-													<td><input type="checkbox" id="checkbox" name="checkbox" value="${board.board_seq}"/></td>
-													<td>${board.board_seq}</td>
-													<td><a href="detail?board_seq=${board.board_seq}" style="text-decoration-line:underline; text-decoration-style: double;">${board.board_title}</a></td>
-													<td><a class="text_css"> ${board.board_text}</a></td>
-													<td>${board.board_writer}</td>
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-									<ul class="paging" style="text-align: center;">
-										<c:if test="${paging.prev}">
-											<span>
-											<a href='<c:url value="board?page=${paging.startPage-1}"/>'>◀[이전]</a>&nbsp&nbsp
-											</span>
-										</c:if>
-										<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
-											<span>
-											<a href='<c:url value="board?page=${num}"/>'>${num}</a>&nbsp&nbsp
-											</span>
-										</c:forEach>
-										<c:if test="${paging.next && paging.endPage>0}">
-											<span>
-											<a href='<c:url value="board?page=${paging.endPage+1}"/>'>[다음]▶</a>
-											</span>
-										</c:if>
-									</ul>
-								</div>
-							</div>
+						
 							<!-- END TABLE NO PADDING -->
 						</div>
 					</div>
