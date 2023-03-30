@@ -22,4 +22,12 @@ public interface BoardMapper {
 
 	public int boardListCnt();
 
+	public String search(String text);
+
+	public BoardVO modify(int board_seq);
+
+	public void modifybtn(BoardVO vo);
+
+	public void delete(String delete);
+
 }

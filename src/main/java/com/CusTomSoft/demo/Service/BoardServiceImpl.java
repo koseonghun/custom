@@ -51,5 +51,32 @@ public class BoardServiceImpl implements BoardService {
 		return bm.boardList(cri);
 	}
 
+	@Override
+	public String search(String text) {
+		
+		return bm.search(text);
+		
+	}
+
+	@Override
+	public BoardVO modify(int board_seq) {
+		
+		return bm.modify(board_seq);
+	}
+
+	@Override
+	public void modifybtn(BoardVO vo) {
+		
+		bm.modifybtn(vo);
+		
+	}
+
+	@Override
+	public void delete(String delete) {
+
+		bm.delete(delete);
+		
+	}
+
 
 }

@@ -19,4 +19,12 @@ public interface BoardService {
 
 	List<Map<String, Object>> boardList(Criteria cri) throws Exception;
 
+	public String search(String text);
+
+	public BoardVO modify(int board_seq);
+
+	public void modifybtn(BoardVO vo);
+
+	public void delete(String delete);
+
 }

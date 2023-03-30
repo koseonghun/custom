@@ -30,6 +30,82 @@
 	href="assets/img/apple-icon.png">
 <link rel="icon" type="image/png" sizes="96x96"
 	href="assets/img/favicon.png">
+
+<style>
+	.text_css{
+	 max-width: calc(100% - 50px);
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+ 	  display: -webkit-box;
+ 	 -webkit-line-clamp: 1;
+ 	 -webkit-box-orient: vertical;
+ 	 width: 150px;
+ 	 height:30px;
+	}
+
+</style>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+
+
+function deletebtn(){
+	
+	var array;
+	var seq = $("input[name='checkbox']");
+	
+	for(var i=0; i<seq.length; i++){
+		if(seq[i].checked){
+			array.push(seq[i].value);
+		}
+	}
+	if (array.length == 0){
+		alert("선택된 글이 없습니다.")
+	}else{
+		var chk = confirm("정말 삭제하시겠습니까?")
+	
+		$.ajax({
+			url : "delete",
+			type : "POST",
+			data : {
+				array : array,
+			},
+			datatype : "json",
+			success : function(result){
+				if(result==''){
+					alert("삭제실패!")
+				}else{
+					window.location.href="redirect:board";
+				}
+			},error : function(){
+				alert("에러!")
+			}
+			
+		});
+	}
+		
+}
+
+function search(){
+	
+	var text = 
+	
+	$.ajax({
+		url : "search",
+		type : "POST",
+		data : {
+			text : text
+		},
+		datatype : "json",
+		success : function(search){
+			alert("성공")
+		},error : function(){
+			alert("에러!")
+		}
+	})
+}
+
+</script>
+
 <body>
 	<!-- WRAPPER -->
 	<div id="wrapper">
@@ -102,17 +178,15 @@
 									<h3 class="panel-title">BoardList</h3>
 									<form class="navbar-form navbar-left">
 										<div class="input-group">
-											<input type="text" value="" class="form-control"
-												placeholder="Search"> <span class="input-group-btn">
-												<button type="button" class="form-control"
-													style="background-color: green; color: white;">검색</button>
+											<input type="text" id= "search" name="search" value="" class="form-control"
+												placeholder="Search" > <span class="input-group-btn">
+												<button type="button" class="form-control" onclick="javascript:search()" style="background-color: green; color: white;">검색</button>
 											</span>
 										</div>
 									</form>
 								</div>
 								<div>
-									<button type="button" style="float: right;"
-										class="btn btn-success update-pro" onclick="">
+									<button type="button" style="float: right;" class="btn btn-success update-pro" onclick="javascript:deletebtn()">
 										<span>삭제</span>
 									</button>
 								</div>
@@ -138,10 +212,10 @@
 										<tbody>
 											<c:forEach items="${boardlist}" var="board">
 												<tr>
-													<td><input type="checkbox" /></td>
+													<td><input type="checkbox" id="checkbox" name="checkbox" value="${board.board_seq}"/></td>
 													<td>${board.board_seq}</td>
-													<td><a href="detail?board_seq=${board.board_seq}">${board.board_title}</a></td>
-													<td>${board.board_text}</td>
+													<td><a href="detail?board_seq=${board.board_seq}" style="text-decoration-line:underline; text-decoration-style: double;">${board.board_title}</a></td>
+													<td><a class="text_css"> ${board.board_text}</a></td>
 													<td>${board.board_writer}</td>
 												</tr>
 											</c:forEach>

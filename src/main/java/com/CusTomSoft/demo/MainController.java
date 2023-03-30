@@ -156,6 +156,15 @@ public class MainController {
 		return "detail";
 	}
 	
+	@PostMapping("search")
+	@ResponseBody
+	public String search(@RequestParam String text) {
+		
+			bs.search(text);
+		
+		return "search";
+	}
+	
 
 	
 	@GetMapping("jqgrid")
@@ -165,9 +174,38 @@ public class MainController {
 	}
 	
 	@GetMapping("modify")
-	public String modify() {
+	public String modify(Model model,int board_seq) {
+		
+		BoardVO modify = bs.modify(board_seq);
+		model.addAttribute("modify",modify);
 		
 		return "modify";
+	}
+	
+	@PostMapping("modifybtn")
+	public String modifybtn(BoardVO vo) {
+
+		
+		bs.modifybtn(vo);
+		
+		return "redirect:boardlist";
+	}
+	
+	@PostMapping("delete")
+	@ResponseBody
+	public String delete(HttpServletRequest request) {
+		
+		
+		
+		String[] delete = request.getParameterValues("array");
+		int size = delete.length;
+		for(int i=0; i<size; i++) {
+			bs.delete(delete[i]);
+		}
+		
+		System.out.println(delete+"@$!@!%!%!@!@!!!");
+		
+		return "redirect:board";
 	}
 	
 	@GetMapping("file")

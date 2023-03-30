@@ -25,6 +25,13 @@
 <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 </head>
 
+<style>
+	.text_css{
+ 	 width: 300px;
+ 	 height:30px;
+	}
+
+</style>
 <body>
 	<!-- WRAPPER -->
 
@@ -91,10 +98,10 @@
 					<div class="row">
 						<div class="col-md-6-KO">
 							<!-- INPUTS -->
-							<div class="panel">
+							<div class="panel" style="height:550px;">
 								<div class="panel-heading">
 									<h3 class="panel-title">RegBoard</h3>
-											<input type="button" value="수정" onclick="location.href='modify'" class="btn btn-success update-pro" style="float:right; background-color:green; color:white;"/>
+											<input type="button" value="수정" onclick="location.href='modify?board_seq=${detail.board_seq}'" class="btn btn-success update-pro" style="float:right; background-color:green; color:white;"/>
 											<input type="button" onclick="location.href='boardlist'" class="btn btn-success update-pro" style="float:right; background-color:blue; color:white;" value="목록"/>
 								</div>
 								<div class="panel-body">
@@ -113,7 +120,7 @@
 											<tr>
 												<td>${detail.board_seq}</td>
 												<td>${detail.board_title}</td>
-												<td>${detail.board_text}</td>
+												<td class="text_css">${detail.board_text}</td>
 												<td>${detail.board_writer}</td>
 												<td><a href="file?board_img_path=${detail.board_img_path}">${detail.board_img_path}</a></td>
 												<td><fmt:formatDate pattern="yyyy-MM-dd" value="${detail.board_reg_date}" /></td>
