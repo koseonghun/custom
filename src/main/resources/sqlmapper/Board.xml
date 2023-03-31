@@ -49,14 +49,16 @@
 	</select>
 	
 	<update id="modifybtn">
-		
 		update general_board 
 		set 
 		board_title=#{board_title}, board_text=#{board_text}, board_img_path=#{board_img_path}
 		where board_seq=#{board_seq}
-		
-	
 	</update>
+	
+	<select id="search" resultType="com.CusTomSoft.demo.VO.BoardVO">
+		select * from general_board
+		where board_title like #{search} or board_text like #{search}
+	</select>
 	
 	<delete id="delete">
 		delete general_board where board_seq={#board_seq}

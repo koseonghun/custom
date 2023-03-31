@@ -19,7 +19,7 @@ public interface BoardService {
 
 	List<Map<String, Object>> boardList(Criteria cri) throws Exception;
 
-	public String search(String text);
+	public BoardVO search(String search);
 
 	public BoardVO modify(int board_seq);
 

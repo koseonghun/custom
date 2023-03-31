@@ -52,9 +52,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public String search(String text) {
+	public BoardVO search(String search) {
 		
-		return bm.search(text);
+		return bm.search(search);
 		
 	}
 

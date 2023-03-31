@@ -22,7 +22,7 @@ public interface BoardMapper {
 
 	public int boardListCnt();
 
-	public String search(String text);
+	public BoardVO search(String search);
 
 	public BoardVO modify(int board_seq);
 

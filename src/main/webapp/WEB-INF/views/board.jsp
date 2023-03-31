@@ -22,14 +22,10 @@
 <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 <link rel="stylesheet" href="assets/css/demo.css">
 <!-- GOOGLE FONTS -->
-<link
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 <!-- ICONS -->
-<link rel="apple-touch-icon" sizes="76x76"
-	href="assets/img/apple-icon.png">
-<link rel="icon" type="image/png" sizes="96x96"
-	href="assets/img/favicon.png">
+<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 
 <style>
 	.text_css{
@@ -42,7 +38,6 @@
  	 width: 150px;
  	 height:30px;
 	}
-
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -83,25 +78,6 @@ function deletebtn(){
 		});
 	}
 		
-}
-
-function search(){
-	
-	var text = 
-	
-	$.ajax({
-		url : "search",
-		type : "POST",
-		data : {
-			text : text
-		},
-		datatype : "json",
-		success : function(search){
-			alert("성공")
-		},error : function(){
-			alert("에러!")
-		}
-	})
 }
 
 </script>
@@ -176,11 +152,11 @@ function search(){
 							<div class="panel">
 								<div class="panel-heading">
 									<h3 class="panel-title">BoardList</h3>
-									<form class="navbar-form navbar-left">
+									<form name="search-form" action="search" method="GET" class="navbar-form navbar-left">
 										<div class="input-group">
-											<input type="text" id= "search" name="search" value="" class="form-control"
-												placeholder="Search" > <span class="input-group-btn">
-												<button type="button" class="form-control" onclick="javascript:search()" style="background-color: green; color: white;">검색</button>
+											<input type="text" id="search" name="search" class="form-control" placeholder="Search" > 
+											<span class="input-group-btn">
+												<button type="submit" class="form-control" onclick="javascript:searchbtn()" style="background-color: green; color: white;">검색</button>
 											</span>
 										</div>
 									</form>

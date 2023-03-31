@@ -1,5 +1,11 @@
 package com.CusTomSoft.demo.VO;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 public class Paging {
 	  private int totalCount; // 게시판 전체 데이터 개수
 	    private int displayPageNum = 10; // 게시판 화면에서 한번에 보여질 페이지 번호의 개수
@@ -96,4 +102,5 @@ public class Paging {
 	        return "PageMaker [totalCount=" + totalCount + ", startPage=" + startPage + ", endPage=" + endPage + ", prev="
 	                + prev + ", next=" + next + ", displayPageNum=" + displayPageNum + ", cri=" + cri + "]";
 	    }
+	    
 }

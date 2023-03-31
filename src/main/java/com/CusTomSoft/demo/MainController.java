@@ -151,22 +151,20 @@ public class MainController {
 		vo.setBoard_seq(board_seq);
 		
 		BoardVO detail = bs.detail(board_seq);
-		model.addAttribute("detail",detail);  
+		model.addAttribute("detail",detail);
 		
 		return "detail";
 	}
 	
-	@PostMapping("search")
-	@ResponseBody
-	public String search(@RequestParam String text) {
+	@GetMapping("search")
+	public String search(@RequestParam String search,Model model) {
 		
-			bs.search(text);
+		BoardVO result = bs.search(search);
+		model.addAttribute("boardList",result);
 		
-		return "search";
+		return "board";
 	}
-	
-
-	
+		
 	@GetMapping("jqgrid")
 	public String jqgrid() {
 		
@@ -185,16 +183,13 @@ public class MainController {
 	@PostMapping("modifybtn")
 	public String modifybtn(BoardVO vo) {
 
-		
-		bs.modifybtn(vo);
-		
+		bs.modifybtn(vo);		
 		return "redirect:boardlist";
 	}
 	
 	@PostMapping("delete")
 	@ResponseBody
 	public String delete(HttpServletRequest request) {
-		
 		
 		String[] delete = request.getParameterValues("array");
 		int size = delete.length;
