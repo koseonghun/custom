@@ -55,9 +55,22 @@
 		where board_seq=#{board_seq}
 	</update>
 	
-	<select id="search" resultType="com.CusTomSoft.demo.VO.BoardVO">
+	<select id="search" parameterType="com.CusTomSoft.demo.VO.BoardVO" resultType="com.CusTomSoft.demo.VO.BoardVO">
 		select * from general_board
-		where board_title like #{search} or board_text like #{search}
+		<choose>
+			<when test="type !=null and type.equals('board_title')">
+				where board_title like CONCAT('%', #{keyword}, '%')
+				ORDER BY board_seq DESC
+			</when>
+			<when test="type !=null and type.equals('board_text')">
+				where board_text like CONCAT('%', #{keyword}, '%')
+				ORDER BY board_seq DESC
+			</when>
+			<when test="type !=null and type.equals('board_writer')">
+				where board_writer = #{keyword}
+				ORDER BY board_seq DESC
+			</when>
+		</choose>
 	</select>
 	
 	<delete id="delete">

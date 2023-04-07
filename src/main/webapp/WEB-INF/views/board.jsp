@@ -80,6 +80,43 @@ function deletebtn(){
 		
 }
 
+
+function searchbtn(){
+	
+	var keyword = $("#keyword").val();
+	var type =$("#type").val();
+	
+	if(keyword==""){
+		location.href="board";
+	}else if(type==""){
+		location.href="board";
+	}
+	else{
+	$.ajax({
+		url : "search",
+		type : "GET",
+		data : $("form[name=search-form]").serialize(),
+		success : function(result){
+			$('#boardtable > tbody').empty();
+			if(result.length>=1){
+				result.forEach(function(item){
+						str='<tr>'
+						str+="<td>"+"<input type='checkbox'>"+"</td>";
+						str+= "<td>"+item.board_seq+"</td>";
+						str+="<td><a href = 'detail?board_seq=" + item.board_seq + "'style='text-decoration-line:underline;  text-decoration-style: double;'>"+item.board_title+"</a></td>";
+						str+="<td><a class= 'text_css'>" + item.board_text + "</a></td>";
+						str+="<td>"+item.board_writer+"</td>";
+						str+="</tr>"
+						$('#boardtable').append(str);
+						
+				})
+			}
+		}
+	
+	})
+	}
+}
+
 </script>
 
 <body>
@@ -116,7 +153,6 @@ function deletebtn(){
 									<span>로그아웃</span>
 								</button>
 						</a></li>
-						</if>
 					</ul>
 				</div>
 			</div>
@@ -152,11 +188,17 @@ function deletebtn(){
 							<div class="panel">
 								<div class="panel-heading">
 									<h3 class="panel-title">BoardList</h3>
-									<form name="search-form" action="search" method="GET" class="navbar-form navbar-left">
+									<form name="search-form" onsubmit="return false" class="navbar-form navbar-left">
 										<div class="input-group">
-											<input type="text" id="search" name="search" class="form-control" placeholder="Search" > 
+											<select name="type" id="type">
+												<option selected value="">검색 내용 선택</option>
+												<option value="board_title">제목</option>
+												<option value="board_text">내용</option>
+												<option value="board_writer">작성자</option>
+											</select>
+											<input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search" > 
 											<span class="input-group-btn">
-												<button type="submit" class="form-control" onclick="javascript:searchbtn()" style="background-color: green; color: white;">검색</button>
+												<input type="button" class="form-control" onclick="javascript:searchbtn()" style="background-color: green; color: white; height:55px;" value="검색"/>
 											</span>
 										</div>
 									</form>
@@ -175,7 +217,7 @@ function deletebtn(){
 									</button>
 								</div>
 								<div class="panel-body no-padding">
-									<table class="table">
+									<table class="table" id="boardtable">
 										<thead>
 											<tr>
 												<th>선택</th>
@@ -228,9 +270,8 @@ function deletebtn(){
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">
-					Shared by <i class="fa fa-love"></i><a
-						href="https://bootstrapthemes.co">BootstrapThemes</a>
+				<p class="copyright">Shared by <i class="fa fa-love"></i>
+				<a href="https://bootstrapthemes.co">BootstrapThemes</a>
 				</p>
 			</div>
 		</footer>

@@ -18,7 +18,7 @@ import com.CusTomSoft.demo.Service.BoardService;
 import com.CusTomSoft.demo.Service.UserService;
 import com.CusTomSoft.demo.VO.BoardVO;
 import com.CusTomSoft.demo.VO.Criteria;
-import com.CusTomSoft.demo.VO.Paging;
+import com.CusTomSoft.demo.VO.PageMaker;
 import com.CusTomSoft.demo.VO.UserVO;
 
 @Controller
@@ -111,7 +111,7 @@ public class MainController {
 		int boardListCnt = bs.boardListCnt();
 		
         // 페이징 객체
-        Paging paging = new Paging();
+        PageMaker paging = new PageMaker();
         paging.setCri(cri);
         paging.setTotalCount(boardListCnt);    
         
@@ -157,12 +157,14 @@ public class MainController {
 	}
 	
 	@GetMapping("search")
-	public String search(@RequestParam String search,Model model) {
+	@ResponseBody
+	public List<BoardVO> search(Criteria cri,@RequestParam String type,@RequestParam String keyword,Model model) {
 		
-		BoardVO result = bs.search(search);
-		model.addAttribute("boardList",result);
+		BoardVO vo = new BoardVO();
+		vo.setType(type);
+		vo.setKeyword(keyword);
 		
-		return "board";
+		return bs.search(vo);
 	}
 		
 	@GetMapping("jqgrid")

@@ -12,6 +12,8 @@ public class BoardVO {
 	public Date board_mod_date;
 	public String board_img_path;
 	public String board_del_yn;
+	private String type;
+	private String keyword;
 	
 	private int nowPage;
 	private int startPage;
@@ -183,6 +185,20 @@ public class BoardVO {
 				+ ", cntPerPage=" + cntPerPage + ", lastPage=" + lastPage + ", start=" + start + ", end=" + end
 				+ ", cntPage=" + cntPage + "]";
 	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	
+	
 	
 }
 

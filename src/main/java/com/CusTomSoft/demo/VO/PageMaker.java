@@ -6,7 +6,7 @@ import java.net.URLEncoder;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public class Paging {
+public class PageMaker {
 	  private int totalCount; // 게시판 전체 데이터 개수
 	    private int displayPageNum = 10; // 게시판 화면에서 한번에 보여질 페이지 번호의 개수
 	    
@@ -14,9 +14,7 @@ public class Paging {
 	    private int endPage;  // 화면의 끝 번호
 	    private boolean prev; // 페이징 이전 버튼 활성화 여부
 	    private boolean next; // 페이징 다음 버튼 활성화 여부
-	    
 	    private Criteria cri;
-	 
 	    
 	    public int getTotalCount() {
 	        return totalCount;
@@ -102,5 +100,7 @@ public class Paging {
 	        return "PageMaker [totalCount=" + totalCount + ", startPage=" + startPage + ", endPage=" + endPage + ", prev="
 	                + prev + ", next=" + next + ", displayPageNum=" + displayPageNum + ", cri=" + cri + "]";
 	    }
+	    
+	    
 	    
 }

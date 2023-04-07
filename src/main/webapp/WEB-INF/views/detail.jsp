@@ -18,8 +18,7 @@
 <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 <link rel="stylesheet" href="assets/css/demo.css">
 <!-- GOOGLE FONTS -->
-<link
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 <!-- ICONS -->
 <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
@@ -30,11 +29,10 @@
  	 width: 300px;
  	 height:30px;
 	}
-
 </style>
+
 <body>
 	<!-- WRAPPER -->
-
 	<div id="wrapper">
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
@@ -78,7 +76,7 @@
 				<nav>
 					<ul class="nav">
 						<li><a href="index" class="active"><i
-								class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+								class="lnr lnr-home"></i> <span>Dash board</span></a></li>
 						<li><a onclick="location.href='board'" class=""><i
 								class="lnr lnr-dice"></i> <span>Board</span></a></li>
 						<li><a onclick="location.href='jqgrid'" class=""><i
@@ -153,5 +151,4 @@
 	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>
 </body>
-
 </html>
