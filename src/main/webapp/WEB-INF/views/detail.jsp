@@ -75,13 +75,13 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="index" class="active"><i
-								class="lnr lnr-home"></i> <span>Dash board</span></a></li>
-						<li><a onclick="location.href='board'" class=""><i
+						<li><a href="index" class=""><i
+								class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+						<li><a onclick="location.href='board'" class="active"><i
 								class="lnr lnr-dice"></i> <span>Board</span></a></li>
 						<li><a onclick="location.href='jqgrid'" class=""><i
 								class="lnr lnr-text-format"></i> <span>JqGrid</span></a></li>
-						<li><a href="icons.jsp" class=""><i
+						<li><a onclick="location.href='api'" class=""><i
 								class="lnr lnr-linearicons"></i> <span>API</span></a></li>
 					</ul>
 				</nav>

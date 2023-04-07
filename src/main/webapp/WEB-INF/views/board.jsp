@@ -42,44 +42,9 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 
-
 function deletebtn(){
-	
-	var array;
-	var seq = $("input[name='checkbox']");
-	
-	for(var i=0; i<seq.length; i++){
-		if(seq[i].checked){
-			array.push(seq[i].value);
-		}
-	}
-	if (array.length == 0){
-		alert("선택된 글이 없습니다.")
-	}else{
-		var chk = confirm("정말 삭제하시겠습니까?")
-	
-		$.ajax({
-			url : "delete",
-			type : "POST",
-			data : {
-				array : array,
-			},
-			datatype : "json",
-			success : function(result){
-				if(result==''){
-					alert("삭제실패!")
-				}else{
-					window.location.href="redirect:board";
-				}
-			},error : function(){
-				alert("에러!")
-			}
-			
-		});
-	}
-		
+	alert("하이")	
 }
-
 
 function searchbtn(){
 	
@@ -103,12 +68,11 @@ function searchbtn(){
 						str='<tr>'
 						str+="<td>"+"<input type='checkbox'>"+"</td>";
 						str+= "<td>"+item.board_seq+"</td>";
-						str+="<td><a href = 'detail?board_seq=" + item.board_seq + "'style='text-decoration-line:underline;  text-decoration-style: double;'>"+item.board_title+"</a></td>";
-						str+="<td><a class= 'text_css'>" + item.board_text + "</a></td>";
+						str+="<td><a href='detail?board_seq=" + item.board_seq + "'style='text-decoration-line:underline;  text-decoration-style: double;'>"+item.board_title+"</a></td>";
+						str+="<td><a class='text_css'>" + item.board_text + "</a></td>";
 						str+="<td>"+item.board_writer+"</td>";
 						str+="</tr>"
-						$('#boardtable').append(str);
-						
+						$('#boardtable').append(str);	
 				})
 			}
 		}
@@ -116,7 +80,6 @@ function searchbtn(){
 	})
 	}
 }
-
 </script>
 
 <body>
