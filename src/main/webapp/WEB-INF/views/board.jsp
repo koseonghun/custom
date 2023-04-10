@@ -22,66 +22,103 @@
 <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 <link rel="stylesheet" href="assets/css/demo.css">
 <!-- GOOGLE FONTS -->
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
+	rel="stylesheet">
 <!-- ICONS -->
-<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" sizes="76x76"
+	href="assets/img/apple-icon.png">
+<link rel="icon" type="image/png" sizes="96x96"
+	href="assets/img/favicon.png">
 
 <style>
-	.text_css{
-	 max-width: calc(100% - 50px);
-	  overflow: hidden;
-	  text-overflow: ellipsis;
- 	  display: -webkit-box;
- 	 -webkit-line-clamp: 1;
- 	 -webkit-box-orient: vertical;
- 	 width: 150px;
- 	 height:30px;
-	}
+.text_css {
+	max-width: calc(100% - 50px);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	width: 150px;
+	height: 30px;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
+	function deletebtn() {
 
-function deletebtn(){
-	alert("하이")	
-}
+		/* var check = $("input[name='checkbox']:checked").val(); */
+		var checkArr = [];
+		
+		$("input[name='checkbox']:checked").each(function() {
+			checkArr.push($(this).val()); // 체크된 것만 값을 뽑아서 배열에 push
+			console.log(checkArr);
+		})
+		
 
-function searchbtn(){
-	
-	var keyword = $("#keyword").val();
-	var type =$("#type").val();
-	
-	if(keyword==""){
-		location.href="board";
-	}else if(type==""){
-		location.href="board";
-	}
-	else{
-	$.ajax({
-		url : "search",
-		type : "GET",
-		data : $("form[name=search-form]").serialize(),
-		success : function(result){
-			$('#boardtable > tbody').empty();
-			if(result.length>=1){
-				result.forEach(function(item){
-						str='<tr>'
-						str+="<td>"+"<input type='checkbox'>"+"</td>";
-						str+= "<td>"+item.board_seq+"</td>";
-						str+="<td><a href='detail?board_seq=" + item.board_seq + "'style='text-decoration-line:underline;  text-decoration-style: double;'>"+item.board_title+"</a></td>";
-						str+="<td><a class='text_css'>" + item.board_text + "</a></td>";
-						str+="<td>"+item.board_writer+"</td>";
-						str+="</tr>"
-						$('#boardtable').append(str);	
-				})
+		$.ajax({
+			url : "delete",
+			type : "GET",
+			data : {
+				checkArr : checkArr
+			},
+
+			success : function(result) {
+				alert("삭제 완료!")
+				location.href= "board";
+			},
+			error : function() {
+				alert("실패")
 			}
-		}
-	
-	})
+		})
 	}
-}
-</script>
 
+	function searchbtn() {
+
+		var keyword = $("#keyword").val();
+		var type = $("#type").val();
+
+		if (keyword == "") {
+			location.href = "board";
+		} else if (type == "") {
+			location.href = "board";
+		} else {
+			$
+					.ajax({
+						url : "search",
+						type : "GET",
+						data : $("form[name=search-form]").serialize(),
+						success : function(result) {
+							$('#boardtable > tbody').empty();
+							if (result.length >= 1) {
+								result
+										.forEach(function(item) {
+											str = '<tr>'
+											str += "<td>"
+													+ "<input type='checkbox'>"
+													+ "</td>";
+											str += "<td>" + item.board_seq
+													+ "</td>";
+											str += "<td><a href='detail?board_seq="
+													+ item.board_seq
+													+ "'style='text-decoration-line:underline;  text-decoration-style: double;'>"
+													+ item.board_title
+													+ "</a></td>";
+											str += "<td><a class='text_css'>"
+													+ item.board_text
+													+ "</a></td>";
+											str += "<td>" + item.board_writer
+													+ "</td>";
+											str += "</tr>"
+											$('#boardtable').append(str);
+										})
+							}
+						}
+
+					})
+		}
+	}
+</script>
 <body>
 	<!-- WRAPPER -->
 	<div id="wrapper">
@@ -126,8 +163,8 @@ function searchbtn(){
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="index" class=""><i
-								class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+						<li><a href="index" class=""><i class="lnr lnr-home"></i>
+								<span>Dashboard</span></a></li>
 						<li><a onclick="location.href='board'" class="active"><i
 								class="lnr lnr-dice"></i> <span>Board</span></a></li>
 						<li><a onclick="location.href='jqgrid'" class=""><i
@@ -151,23 +188,28 @@ function searchbtn(){
 							<div class="panel">
 								<div class="panel-heading">
 									<h3 class="panel-title">BoardList</h3>
-									<form name="search-form" onsubmit="return false" class="navbar-form navbar-left">
+									<form name="search-form" onsubmit="return false"
+										class="navbar-form navbar-left">
 										<div class="input-group">
 											<select name="type" id="type">
 												<option selected value="">검색 내용 선택</option>
 												<option value="board_title">제목</option>
 												<option value="board_text">내용</option>
 												<option value="board_writer">작성자</option>
-											</select>
-											<input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search" > 
-											<span class="input-group-btn">
-												<input type="button" class="form-control" onclick="javascript:searchbtn()" style="background-color: green; color: white; height:55px;" value="검색"/>
+											</select> <input type="text" name="keyword" id="keyword"
+												class="form-control" placeholder="Search"> <span
+												class="input-group-btn"> <input type="button"
+												class="form-control" onclick="javascript:searchbtn()"
+												style="background-color: green; color: white; height: 55px;"
+												value="검색" />
 											</span>
 										</div>
 									</form>
 								</div>
 								<div>
-									<button type="button" style="float: right;" class="btn btn-success update-pro" onclick="javascript:deletebtn()">
+									<button type="button" style="float: right;"
+										class="btn btn-success update-pro"
+										onclick="javascript:deletebtn()">
 										<span>삭제</span>
 									</button>
 								</div>
@@ -193,9 +235,11 @@ function searchbtn(){
 										<tbody>
 											<c:forEach items="${boardlist}" var="board">
 												<tr>
-													<td><input type="checkbox" id="checkbox" name="checkbox" value="${board.board_seq}"/></td>
+													<td><input type="checkbox" id="checkbox"
+														name="checkbox" value="${board.board_seq}" /></td>
 													<td>${board.board_seq}</td>
-													<td><a href="detail?board_seq=${board.board_seq}" style="text-decoration-line:underline; text-decoration-style: double;">${board.board_title}</a></td>
+													<td><a href="detail?board_seq=${board.board_seq}"
+														style="text-decoration-line: underline; text-decoration-style: double;">${board.board_title}</a></td>
 													<td><a class="text_css"> ${board.board_text}</a></td>
 													<td>${board.board_writer}</td>
 												</tr>
@@ -204,18 +248,18 @@ function searchbtn(){
 									</table>
 									<ul class="paging" style="text-align: center;">
 										<c:if test="${paging.prev}">
-											<span>
-											<a href='<c:url value="board?page=${paging.startPage-1}"/>'>◀[이전]</a>&nbsp&nbsp
+											<span> <a
+												href='<c:url value="board?page=${paging.startPage-1}"/>'>◀[이전]</a>&nbsp&nbsp
 											</span>
 										</c:if>
-										<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
-											<span>
-											<a href='<c:url value="board?page=${num}"/>'>${num}</a>&nbsp&nbsp
+										<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
+											var="num">
+											<span> <a href='<c:url value="board?page=${num}"/>'>${num}</a>&nbsp&nbsp
 											</span>
 										</c:forEach>
 										<c:if test="${paging.next && paging.endPage>0}">
-											<span>
-											<a href='<c:url value="board?page=${paging.endPage+1}"/>'>[다음]▶</a>
+											<span> <a
+												href='<c:url value="board?page=${paging.endPage+1}"/>'>[다음]▶</a>
 											</span>
 										</c:if>
 									</ul>
@@ -233,8 +277,9 @@ function searchbtn(){
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">Shared by <i class="fa fa-love"></i>
-				<a href="https://bootstrapthemes.co">BootstrapThemes</a>
+				<p class="copyright">
+					Shared by <i class="fa fa-love"></i> <a
+						href="https://bootstrapthemes.co">BootstrapThemes</a>
 				</p>
 			</div>
 		</footer>

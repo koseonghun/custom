@@ -25,6 +25,6 @@ public interface BoardService {
 
 	public void modifybtn(BoardVO vo);
 
-	public void delete(String delete);
+	public void delete(List<String> check);
 
 }

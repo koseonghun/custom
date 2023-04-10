@@ -1,5 +1,6 @@
 package com.CusTomSoft.demo;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -189,19 +190,12 @@ public class MainController {
 		return "redirect:boardlist";
 	}
 	
-	@PostMapping("delete")
+	@GetMapping("delete")
 	@ResponseBody
-	public String delete(HttpServletRequest request) {
+	public void delete(@RequestParam(value="checkArr[]") List<String> check) {
+
+		bs.delete(check);
 		
-		String[] delete = request.getParameterValues("array");
-		int size = delete.length;
-		for(int i=0; i<size; i++) {
-			bs.delete(delete[i]);
-		}
-		
-		System.out.println(delete+"@$!@!%!%!@!@!!!");
-		
-		return "redirect:board";
 	}
 	
 	@GetMapping("file")

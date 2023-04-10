@@ -28,7 +28,7 @@ public interface BoardMapper {
 
 	public void modifybtn(BoardVO vo);
 
-	public void delete(String delete);
+	public void delete(List<String> check);
 
 	public List<BoardVO> search(BoardVO vo);
 

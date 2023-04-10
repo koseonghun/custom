@@ -72,9 +72,11 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void delete(String delete) {
-
-		bm.delete(delete);
+	public void delete(List<String> check) {
+		
+		System.out.println("삭제 게시물 SEQ 번호 =="+ check);
+		
+		bm.delete(check);
 		
 	}
 

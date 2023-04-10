@@ -120,8 +120,8 @@
 									<h4>파일</h4>
 									<input type="file" id="board_img_path" name="board_img_path" class="form-control">
 									<br>
-									<input type="button" onclick="javascript:writebtn()" value="저장" style="vertical-align:midle;"/>
-									<input type="button" onclick="location.href='boardlist'" value="목록" style="vertical-align:middle;">
+									<input type="button" onclick="javascript:writebtn()" value="저장" class="btn btn-success update-pro" style="background-color: blue;">
+									<input type="button" onclick="location.href='boardlist'" value="목록" class="btn btn-success update-pro" style="background-color: green;">
 								</div>
 								</form>
 							</div>

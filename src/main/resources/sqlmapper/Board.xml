@@ -73,8 +73,13 @@
 		</choose>
 	</select>
 	
-	<delete id="delete">
-		delete general_board where board_seq={#board_seq}
+	<delete id="delete" parameterType="java.util.List">
+		delete from general_board
+		<where>
+			<foreach collection="list" item="item" open="" close="" separator="or">
+ 				(board_seq=#{item})
+ 			</foreach>
+ 		</where>
 	</delete>
 	
 </mapper>
