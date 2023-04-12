@@ -1,5 +1,7 @@
 package com.CusTomSoft.demo.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -32,6 +34,12 @@ public class UserServiceImpl implements UserService {
 	public int idcheck(String id) {
 		
 		return um.idcheck(id);
+	}
+
+	@Override
+	public List<UserVO> jqgrid() {
+		
+		return um.jqgrid();
 	}
 	
 	

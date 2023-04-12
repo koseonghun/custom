@@ -20,7 +20,7 @@
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="assets/css/main.css">
 <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-<link rel="stylesheet" href="assets/css/demo.css">
+
 <!-- GOOGLE FONTS -->
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
@@ -44,66 +44,37 @@
 	}
 
 </style>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
+<!-- Javascript -->
+	<link rel="stylesheet" type="text/css" href="jqGrid/css/ui.jqgrid.css">
+	<link rel="stylesheet" type="text/css" href="jqGrid/plugins/ui.multiselect.css">
+	<link rel="stylesheet" type="text/css" href="jqGrid/plugins/searchFilter.css">
+	
+	<script type="text/javascript" src="jqGrid/jquery.js"></script>
+	<script type="text/javascript" src="jqGrid/js/i18n/grid.locale-kr.js"></script>
+	<script type="text/javascript" src="jqGrid/js/minified/jquery.jqGrid.min.js"></script>
+	
 
-
-function deletebtn(){
-	
-	var array;
-	var seq = $("input[name='checkbox']");
-	
-	for(var i=0; i<seq.length; i++){
-		if(seq[i].checked){
-			array.push(seq[i].value);
-		}
-	}
-	if (array.length == 0){
-		alert("선택된 글이 없습니다.")
-	}else{
-		var chk = confirm("정말 삭제하시겠습니까?")
-	
-		$.ajax({
-			url : "delete",
-			type : "POST",
-			data : {
-				array : array,
-			},
-			datatype : "json",
-			success : function(result){
-				if(result==''){
-					alert("삭제실패!")
-				}else{
-					window.location.href="redirect:board";
-				}
-			},error : function(){
-				alert("에러!")
-			}
-			
-		});
-	}
-		
-}
-
-function search(){
-	
-	var text = 
-	
-	$.ajax({
-		url : "search",
-		type : "POST",
-		data : {
-			text : text
-		},
-		datatype : "json",
-		success : function(search){
-			alert("성공")
-		},error : function(){
-			alert("에러!")
-		}
-	})
-}
-
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#list").jqGrid({          
+        url:"jqgrid", //ajax 요청주소
+        datatype:"json", //결과물 받을 데이터 타입
+        caption:"list",
+        mtype : "POST",
+        height:"auto",
+        rowNum:10,
+        colNames:["아이디","이름","이메일","전화번호","생년월일","주소"],
+        colModel:[
+                  {name:"custom_user_nick", index:"custom_user_nick", align:"center"},
+                  {name:"custom_user_name", index:"custom_user_name", align:"center", editable:true, edittype:"text"},
+                  {name:"custom_user_email", index:"custom_user_email", align:"center", editable:true, edittype:"text"},
+                  {name:"custom_user_phone", index:"custom_user_phone", align:"center", editable:true, edittype:"text"},
+                  {name:"custom_user_birth", index:"custom_user_birth", align:"center", editable:true, edittype:"text"},
+                  {name:"custom_user_address", index:"custom_user_address", align:"center", editable:true, edittype:"text"}
+                 ],
+        viewrecords:true 
+    });
+});
 </script>
 
 <body>
@@ -139,8 +110,8 @@ function search(){
 									onclick="location.href='logout'">
 									<span>로그아웃</span>
 								</button>
-						</a></li>
-						</if>
+						</a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -171,11 +142,11 @@ function search(){
 			<div class="main-content">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-md-6-KO">
 							<!-- TABLE NO PADDING -->
-						
+							<div>
+								<table id="list"></table>
+							</div>
 							<!-- END TABLE NO PADDING -->
-						</div>
 					</div>
 					<!-- END CONDENSED TABLE -->
 				</div>
@@ -194,11 +165,6 @@ function search(){
 		</footer>
 	</div>
 	<!-- END WRAPPER -->
-	<!-- Javascript -->
-	<script src="assets/vendor/jquery/jquery.min.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="assets/scripts/klorofil-common.js"></script>
 </body>
 
 </html>

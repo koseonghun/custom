@@ -55,7 +55,9 @@
 			console.log(checkArr);
 		})
 		
-
+		if(checkArr==""){
+			alert("삭제 할 게시물을 선택하세요.")
+		}else{
 		$.ajax({
 			url : "delete",
 			type : "GET",
@@ -64,13 +66,14 @@
 			},
 
 			success : function(result) {
-				alert("삭제 완료!")
+				alert("게시물을 삭제했습니다.")
 				location.href= "board";
 			},
 			error : function() {
 				alert("실패")
 			}
 		})
+		}
 	}
 
 	function searchbtn() {
@@ -83,8 +86,7 @@
 		} else if (type == "") {
 			location.href = "board";
 		} else {
-			$
-					.ajax({
+			$.ajax({
 						url : "search",
 						type : "GET",
 						data : $("form[name=search-form]").serialize(),
@@ -135,13 +137,14 @@
 				</div>
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"><img src="assets/img/user.png"
-								class="img-circle" alt="Avatar"> <span>${user.custom_user_nick}</span>
-								<i class="icon-submenu lnr lnr-chevron-down"></i></a>
+						<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<img src="assets/img/user.png"	class="img-circle" alt="Avatar"> 
+								<span>${user.custom_user_nick}</span>
+									<i class="icon-submenu lnr lnr-chevron-down"></i>
+						</a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><i class="lnr lnr-user"></i> <span>My
-											Profile</span></a></li>
+								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
 								<li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
 								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
@@ -196,20 +199,16 @@
 												<option value="board_title">제목</option>
 												<option value="board_text">내용</option>
 												<option value="board_writer">작성자</option>
-											</select> <input type="text" name="keyword" id="keyword"
-												class="form-control" placeholder="Search"> <span
-												class="input-group-btn"> <input type="button"
-												class="form-control" onclick="javascript:searchbtn()"
-												style="background-color: green; color: white; height: 55px;"
-												value="검색" />
+											</select> 
+											<input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search"> 
+											<span class="input-group-btn"> 
+											<input type="button" class="form-control" onclick="javascript:searchbtn()" style="background-color: green; color: white; height: 55px;" value="검색" />
 											</span>
 										</div>
 									</form>
 								</div>
 								<div>
-									<button type="button" style="float: right;"
-										class="btn btn-success update-pro"
-										onclick="javascript:deletebtn()">
+									<button type="button" style="float: right;" class="btn btn-success update-pro" onclick="javascript:deletebtn()">
 										<span>삭제</span>
 									</button>
 								</div>
@@ -248,18 +247,18 @@
 									</table>
 									<ul class="paging" style="text-align: center;">
 										<c:if test="${paging.prev}">
-											<span> <a
-												href='<c:url value="board?page=${paging.startPage-1}"/>'>◀[이전]</a>&nbsp&nbsp
+											<span> 
+											<a href='<c:url value="board?page=${paging.startPage-1}"/>'>◀[이전]</a>&nbsp&nbsp
 											</span>
 										</c:if>
-										<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
-											var="num">
-											<span> <a href='<c:url value="board?page=${num}"/>'>${num}</a>&nbsp&nbsp
+										<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
+											<span> 
+											<a href='<c:url value="board?page=${num}"/>'>${num}</a>&nbsp&nbsp
 											</span>
 										</c:forEach>
 										<c:if test="${paging.next && paging.endPage>0}">
-											<span> <a
-												href='<c:url value="board?page=${paging.endPage+1}"/>'>[다음]▶</a>
+											<span> 
+											<a href='<c:url value="board?page=${paging.endPage+1}"/>'>[다음]▶</a>
 											</span>
 										</c:if>
 									</ul>

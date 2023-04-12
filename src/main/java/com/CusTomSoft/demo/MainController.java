@@ -1,24 +1,32 @@
 package com.CusTomSoft.demo;
 
-import java.util.Iterator;
+import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.CusTomSoft.demo.Service.BoardService;
+import com.CusTomSoft.demo.Service.JqgirdService;
 import com.CusTomSoft.demo.Service.UserService;
 import com.CusTomSoft.demo.VO.BoardVO;
 import com.CusTomSoft.demo.VO.Criteria;
+import com.CusTomSoft.demo.VO.JqgridVO;
 import com.CusTomSoft.demo.VO.PageMaker;
 import com.CusTomSoft.demo.VO.UserVO;
 
@@ -187,6 +195,7 @@ public class MainController {
 	public String modifybtn(BoardVO vo) {
 
 		bs.modifybtn(vo);		
+		
 		return "redirect:boardlist";
 	}
 	
@@ -209,6 +218,24 @@ public class MainController {
 	public String api() {
 		
 		return "api";
+	}
+	
+	@RequestMapping(value="jqgrid")
+	@ResponseBody
+	public List<UserVO> jqGrid(UserVO vo, Model model) {
+		
+		List<UserVO> dataList = us.jqgrid();
+		model.addAttribute("list",dataList);
+		
+		return dataList;
+	}
+	
+	@RequestMapping(value="test")
+	@ResponseBody
+	public ModelAndView test(ModelAndView mav) {
+		
+		mav.setViewName("test");
+		return mav;
 	}
 	
 }

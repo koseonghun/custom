@@ -35,4 +35,3 @@ mybatis:
   type-aliases-package: com.CusTomSoft.demo.Mapper
   mapper-locations: sqlmapper/*.xml
   
- 

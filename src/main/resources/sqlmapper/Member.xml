@@ -32,6 +32,10 @@
 		select count(1) from custom_user
 		where custom_user_nick =#{custom_user_nick}
 	</select>
+	
+	<select id="jqgrid" resultType="com.CusTomSoft.demo.VO.UserVO">
+		select * from custom_user
+	</select>
 
 </mapper>
 
