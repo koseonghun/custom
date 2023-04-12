@@ -59,10 +59,10 @@ $(document).ready(function(){
     $("#list").jqGrid({          
         url:"jqgrid", //ajax 요청주소
         datatype:"json", //결과물 받을 데이터 타입
-        caption:"list",
+        caption:"Custom_edu_first_jqgrid",
         mtype : "POST",
         height:"auto",
-        rowNum:10,
+        rowNum:20,
         colNames:["아이디","이름","이메일","전화번호","생년월일","주소"],
         colModel:[
                   {name:"custom_user_nick", index:"custom_user_nick", align:"center"},
