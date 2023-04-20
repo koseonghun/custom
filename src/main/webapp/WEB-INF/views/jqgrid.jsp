@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -36,8 +35,8 @@
  	 width: 150px;
  	 height:30px;
 	}
-
 </style>
+
 <!-- Javascript -->
 	<link rel="stylesheet" type="text/css" href="jqGrid/css/ui.jqgrid.css">
 	<link rel="stylesheet" type="text/css" href="jqGrid/plugins/ui.multiselect.css">
@@ -86,24 +85,24 @@ $(document).ready(function(){
 				</div>
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"><img src="assets/img/user.png"
-								class="img-circle" alt="Avatar"> <span>${user.custom_user_nick}</span>
-								<i class="icon-submenu lnr lnr-chevron-down"></i></a>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<img src="assets/img/user.png" class="img-circle" alt="Avatar"> 
+									<span>${user.custom_user_nick}</span>
+								<i class="icon-submenu lnr lnr-chevron-down"></i>
+							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><i class="lnr lnr-user"></i> <span>My
-											Profile</span></a></li>
+								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
 								<li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
 								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul></li>
-						<li><a class="update-pro" title="Upgrade to Pro"
-							target="_blank">
-								<button type="button" class="btn btn-success update-pro"
-									onclick="location.href='logout'">
+						<li>
+							<a class="update-pro" title="Upgrade to Pro" target="_blank">
+								<button type="button" class="btn btn-success update-pro" onclick="location.href='logout'">
 									<span>로그아웃</span>
 								</button>
-						</a>
+							</a>
 						</li>
 					</ul>
 				</div>
@@ -150,14 +149,13 @@ $(document).ready(function(){
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">
-					Shared by <i class="fa fa-love"></i><a
-						href="https://bootstrapthemes.co">BootstrapThemes</a>
+				<p class="copyright"> Shared by 
+				<i class="fa fa-love"></i>
+				<a href="https://bootstrapthemes.com">BootstrapThemes</a>
 				</p>
 			</div>
 		</footer>
 	</div>
 	<!-- END WRAPPER -->
 </body>
-
 </html>

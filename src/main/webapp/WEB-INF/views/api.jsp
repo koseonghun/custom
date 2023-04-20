@@ -1,39 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <title>API</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <!-- VENDOR CSS -->
-<link rel="stylesheet"
-	href="assets/vendor/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="assets/vendor/linearicons/style.css">
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="assets/css/main.css">
 <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 <link rel="stylesheet" href="assets/css/demo.css">
 <!-- GOOGLE FONTS -->
-<link
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 <!-- ICONS -->
-<link rel="apple-touch-icon" sizes="76x76"
-	href="assets/img/apple-icon.png">
-<link rel="icon" type="image/png" sizes="96x96"
-	href="assets/img/favicon.png">
-
+<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 <style>
 	.text_css{
-	 max-width: calc(100% - 50px);
+	  max-width: calc(100% - 50px);
 	  overflow: hidden;
 	  text-overflow: ellipsis;
  	  display: -webkit-box;
@@ -44,10 +34,10 @@
 	}
 
 </style>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 <script>
-
-
 function deletebtn(){
 	
 	var array;
@@ -135,12 +125,10 @@ function search(){
 							</ul></li>
 						<li><a class="update-pro" title="Upgrade to Pro"
 							target="_blank">
-								<button type="button" class="btn btn-success update-pro"
-									onclick="location.href='logout'">
+								<button type="button" class="btn btn-success update-pro" onclick="location.href='logout'">
 									<span>로그아웃</span>
 								</button>
 						</a></li>
-						</if>
 					</ul>
 				</div>
 			</div>
