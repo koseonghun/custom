@@ -31,5 +31,5 @@ public interface BoardMapper {
 	public void delete(List<String> check);
 
 	public List<BoardVO> search(BoardVO vo);
-
+	
 }

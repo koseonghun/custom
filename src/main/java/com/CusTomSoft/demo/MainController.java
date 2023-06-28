@@ -1,32 +1,30 @@
 package com.CusTomSoft.demo;
 
-import java.io.PrintWriter;
-import java.util.HashMap;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.CusTomSoft.demo.Service.BoardService;
-import com.CusTomSoft.demo.Service.JqgirdService;
 import com.CusTomSoft.demo.Service.UserService;
 import com.CusTomSoft.demo.VO.BoardVO;
 import com.CusTomSoft.demo.VO.Criteria;
-import com.CusTomSoft.demo.VO.JqgridVO;
 import com.CusTomSoft.demo.VO.PageMaker;
 import com.CusTomSoft.demo.VO.UserVO;
 
@@ -146,8 +144,21 @@ public class MainController {
 	}
 	
 	@PostMapping("write")
-	public String write(BoardVO vo) {
+	public String write(BoardVO vo) throws IOException{
+		//파일 업로드 처리
+		String board_img_path = null;
+		MultipartFile uploadFile = vo.getUploadFile();
+		if(!uploadFile.isEmpty()) {
 			
+			String originalFileName = uploadFile.getOriginalFilename();
+			String ext = FilenameUtils.getExtension(originalFileName);
+			
+			UUID uuid = UUID.randomUUID();
+			board_img_path = uuid+"."+ext;
+			uploadFile.transferTo(new File("D:\\imageseonghun\\"+board_img_path));
+			
+		}
+		vo.setBoard_img_path(board_img_path);
 		bs.write(vo);
 	
 		return "redirect:boardlist";

@@ -3,6 +3,9 @@ package com.CusTomSoft.demo.Service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.CusTomSoft.demo.VO.BoardVO;
 import com.CusTomSoft.demo.VO.Criteria;
 
@@ -26,5 +29,6 @@ public interface BoardService {
 	public void modifybtn(BoardVO vo);
 
 	public void delete(List<String> check);
-
+	 
+	
 }

@@ -2,6 +2,8 @@ package com.CusTomSoft.demo.VO;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardVO {
 	
 	public int board_seq;
@@ -10,10 +12,11 @@ public class BoardVO {
 	public String board_writer;
 	public Date board_reg_date;
 	public Date board_mod_date;
-	public String board_img_path;
 	public String board_del_yn;
 	private String type;
 	private String keyword;
+	private String board_img_path;
+	public MultipartFile uploadFile;
 	
 	private int nowPage;
 	private int startPage;
@@ -65,11 +68,18 @@ public class BoardVO {
 	public void setBoard_mod_date(Date board_mod_date) {
 		this.board_mod_date = board_mod_date;
 	}
+	
 	public String getBoard_img_path() {
 		return board_img_path;
 	}
 	public void setBoard_img_path(String board_img_path) {
 		this.board_img_path = board_img_path;
+	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 	public String getBoard_del_yn() {
 		return board_del_yn;
@@ -77,6 +87,7 @@ public class BoardVO {
 	public void setBoard_del_yn(String board_del_yn) {
 		this.board_del_yn = board_del_yn;
 	}
+
 	
 	public BoardVO(int total, int nowPage, int cntPerPage) {
 		setNowPage(nowPage);

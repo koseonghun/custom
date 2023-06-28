@@ -106,7 +106,7 @@
 								<div class="panel-heading">
 									<h3 class="panel-title">RegBoard</h3>
 								</div>
-								<form action="write" id="write" name="write" method="POST">
+								<form action="write" id="write" name="write" method="POST" enctype="multipart/form-data">
 								<div class="panel-body">
 									<h4>제목</h4>
 									<input type="text" id="board_title" name="board_title" class="form-control" placeholder="제목을 입력해주세요" style="width:750px;">
@@ -118,7 +118,7 @@
 									<input type="text" id="board_text" name="board_text" class="form-control"  placeholder="내용을 입력해주세요" style="width:750px; height:150px;">
 									<br>
 									<h4>파일</h4>
-									<input type="file" id="board_img_path" name="board_img_path" class="form-control">
+									<input type="file" id="uploadFile" name="uploadFile" class="form-control">
 									<br>
 									<input type="button" onclick="javascript:writebtn()" value="저장" class="btn btn-success update-pro" style="background-color: blue;">
 									<input type="button" onclick="location.href='boardlist'" value="목록" class="btn btn-success update-pro" style="background-color: green;">

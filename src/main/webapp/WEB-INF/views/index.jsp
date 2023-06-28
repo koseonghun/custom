@@ -88,7 +88,6 @@
 						<div class="panel-heading">
 							<h3 class="panel-title">Weekly Overview</h3>
 							<p class="panel-subtitle">Period: Oct 14, 2016 - Oct 21, 2016</p>
-							<input type=button onclick="location.href='batch'" value="Batch"/>
 						</div>
 						<div class="panel-body">
 							<div class="row">
@@ -131,7 +130,9 @@
 							</div>
 							<div class="row">
 								<div class="col-md-9">
-									<div id="headline-chart" class="ct-chart"></div>
+									<div>
+										<img src="assets/img/kakao.jpg" style="width:70%; text-align: center;">
+									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="weekly-summary text-right">

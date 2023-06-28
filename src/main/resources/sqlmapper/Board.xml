@@ -1,40 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.CusTomSoft.demo.Mapper.BoardMapper">
-	<resultMap type="com.CusTomSoft.demo.Mapper.BoardMapper" id="bm">
-		<result property="board_seq" column="board_seq"/>
-		<result property="board_title" column="board_title"/>
-		<result property="board_text" column="board_text"/>
-		<result property="board_writer" column="board_writer"/>
-		<result property="board_reg_date" column="board_reg_date"/>
-		<result property="board_mod_date" column="board_mod_date"/>
-		<result property="board_img_path" column="board_img_path"/>
-		<result property="board_del_yn" column="board_del_yn"/>
+	<resultMap type="com.CusTomSoft.demo.Mapper.BoardMapper"
+		id="bm">
+		<result property="board_seq" column="board_seq" />
+		<result property="board_title" column="board_title" />
+		<result property="board_text" column="board_text" />
+		<result property="board_writer" column="board_writer" />
+		<result property="board_reg_date" column="board_reg_date" />
+		<result property="board_mod_date" column="board_mod_date" />
+		<result property="board_img_path" column="board_img_path" />
+		<result property="board_del_yn" column="board_del_yn" />
 	</resultMap>
-	
-	<!--  페이징 처리 전 게시물 가져오기
-	<select id="boardList" resultType="com.CusTomSoft.demo.VO.BoardVO">
-		select board_seq,board_title,board_text,board_writer from general_board;
-	</select> -->
-	
+	<!-- 페이징 처리 전 게시물 가져오기 <select id="boardList" resultType="com.CusTomSoft.demo.VO.BoardVO"> 
+		select board_seq,board_title,board_text,board_writer from general_board; 
+		</select> -->
+
 	<select id="detail" resultType="com.CusTomSoft.demo.VO.BoardVO">
-		select board_seq,board_title,board_text,board_writer,board_reg_date,board_img_path,board_reg_date
+		select
+		board_seq,board_title,board_text,board_writer,board_reg_date,board_img_path,board_reg_date
 		from general_board where board_seq=#{board_seq};
 	</select>
-	
+
 	<insert id="write">
-		insert into general_board(board_title,board_writer,board_text,board_img_path,board_reg_date,board_mod_date)
-		values 
+		insert into
+		general_board(board_title,board_writer,board_text,board_img_path,board_reg_date,board_mod_date)
+		values
 		(#{board_title},#{board_writer},#{board_text},#{board_img_path},now(),now())
 	</insert>
 	
+
 	<select id="boardListCnt" resultType="int">
 		select count(*)
-		from general_board
+		from
+		general_board
 	</select>
-	
-	<select id="boardList" resultType="hashmap" parameterType="hashmap">
+
+	<select id="boardList" resultType="hashmap"
+		parameterType="hashmap">
 		<![CDATA[
             SELECT * 
             FROM general_board
@@ -42,20 +45,24 @@
             LIMIT #{pageStart}, #{perPageNum}
         ]]>
 	</select>
-	
+
 	<select id="modify" resultType="com.CusTomSoft.demo.VO.BoardVO">
 		select * from general_board
-		where board_seq = #{board_seq}
+		where
+		board_seq = #{board_seq}
 	</select>
-	
+
 	<update id="modifybtn">
-		update general_board 
-		set 
+		update general_board
+		set
 		board_title=#{board_title}, board_text=#{board_text}, board_img_path=#{board_img_path}
-		where board_seq=#{board_seq}
+		where
+		board_seq=#{board_seq}
 	</update>
-	
-	<select id="search" parameterType="com.CusTomSoft.demo.VO.BoardVO" resultType="com.CusTomSoft.demo.VO.BoardVO">
+
+	<select id="search"
+		parameterType="com.CusTomSoft.demo.VO.BoardVO"
+		resultType="com.CusTomSoft.demo.VO.BoardVO">
 		select * from general_board
 		<choose>
 			<when test="type !=null and type.equals('board_title')">
@@ -68,18 +75,22 @@
 			</when>
 			<when test="type !=null and type.equals('board_writer')">
 				where board_writer = #{keyword}
-				ORDER BY board_seq DESC
+				ORDER BY board_seq
+				DESC
 			</when>
 		</choose>
 	</select>
-	
+
 	<delete id="delete" parameterType="java.util.List">
 		delete from general_board
 		<where>
-			<foreach collection="list" item="item" open="" close="" separator="or">
- 				(board_seq=#{item})
- 			</foreach>
- 		</where>
+			<foreach collection="list" item="item" open="" close=""
+				separator="or">
+				(board_seq=#{item})
+			</foreach>
+		</where>
 	</delete>
 	
+	
+
 </mapper>
