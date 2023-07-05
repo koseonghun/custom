@@ -16,6 +16,7 @@ public class BoardVO {
 	private String type;
 	private String keyword;
 	private String board_img_path;
+	private String fileName;
 	public MultipartFile uploadFile;
 	
 	private int nowPage;
@@ -68,7 +69,6 @@ public class BoardVO {
 	public void setBoard_mod_date(Date board_mod_date) {
 		this.board_mod_date = board_mod_date;
 	}
-	
 	public String getBoard_img_path() {
 		return board_img_path;
 	}
@@ -87,8 +87,12 @@ public class BoardVO {
 	public void setBoard_del_yn(String board_del_yn) {
 		this.board_del_yn = board_del_yn;
 	}
-
-	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	public BoardVO(int total, int nowPage, int cntPerPage) {
 		setNowPage(nowPage);
 		setCntPerPage(cntPerPage);

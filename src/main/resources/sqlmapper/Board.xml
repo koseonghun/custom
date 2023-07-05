@@ -23,10 +23,12 @@
 	</select>
 
 	<insert id="write">
+		<![CDATA[
 		insert into
 		general_board(board_title,board_writer,board_text,board_img_path,board_reg_date,board_mod_date)
 		values
 		(#{board_title},#{board_writer},#{board_text},#{board_img_path},now(),now())
+		]]>
 	</insert>
 	
 

@@ -120,7 +120,7 @@
 												<td>${detail.board_title}</td>
 												<td class="text_css">${detail.board_text}</td>
 												<td>${detail.board_writer}</td>
-												<td><a href="file?board_img_path=${detail.board_img_path}">${detail.board_img_path}</a></td>
+												<td><a href="download?board_img_path=${detail.board_img_path}">${detail.board_img_path}</a></td>
 												<td><fmt:formatDate pattern="yyyy-MM-dd" value="${detail.board_reg_date}" /></td>
 											</tr>
 										</tbody>
